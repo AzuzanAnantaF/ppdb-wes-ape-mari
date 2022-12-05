@@ -41,6 +41,13 @@
                     <span>User</span>
                 </a>
             </li>
+
+            <li class="{{ request()->is('setting') ? 'active' : '' }}">
+                <a class="nav-link" href="/setting">
+                    <i class="fas fa-cog"></i>
+                    <span>Setting</span>
+                </a>
+            </li>
         </ul>
         @endif
 
@@ -61,6 +68,13 @@
                 <a class="nav-link" href="/user">
                     <i class="fas fa-user"></i>
                     <span>User</span>
+                </a>
+            </li>
+
+            <li class="{{ request()->is('setting') ? 'active' : '' }}">
+                <a class="nav-link" href="/setting">
+                    <i class="fas fa-cog"></i>
+                    <span>Setting</span>
                 </a>
             </li>
         </ul>

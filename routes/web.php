@@ -7,7 +7,8 @@ use App\Http\Controllers\{
     SiswaController,
     JurusanController,
     ProfileController,
-    UserController
+    UserController,
+    SettingController
 };
 
 /*
@@ -47,8 +48,11 @@ Route::resource('/siswa', SiswaController::class);
 Route::get('/jurusan/data', [JurusanController::class, 'data'])->name('jurusan.data');
 Route::resource('/jurusan', JurusanController::class);
 
- //Profile
- Route::resource('/profile', ProfileController::class);
+//Profile
+Route::resource('/profile', ProfileController::class);
 
-  //User
-  Route::resource('/user', UserController::class);
+//User
+Route::resource('/user', UserController::class);
+
+// route Setting
+Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
