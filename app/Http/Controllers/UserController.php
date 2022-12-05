@@ -7,9 +7,9 @@ use App\Models\Jurusan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
-use PDF;
 use Str;
-class SiswaController extends Controller
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class SiswaController extends Controller
         $siswa = Siswa::all();
         $jurusan = Jurusan::all();
 
-        return view('siswa.index', compact('siswa', 'jurusan'));
+        return view('user.index', compact('siswa', 'jurusan'));
     }
 
     public function data()
@@ -33,20 +33,7 @@ class SiswaController extends Controller
             ->addIndexColumn()
             ->addColumn('jurusan_id', function($siswa){
                 return !empty($siswa->jurusan->nama) ? $siswa->jurusan->nama : '-';
-            })
-            ->addColumn('aksi', function($siswa){
-                return '
-
-                <div class="btn-group">
-                    <button onclick="editData(`' .route('siswa.update', $siswa->id). '`)" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
-                    <button onclick="deleteData(`' .route('siswa.destroy', $siswa->id). '`)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                    <a href="' .route('siswa.pdf', $siswa->id). '" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-print"></i></a>
-                </div>
-
-                ';
-            })
-            ->rawColumns(['aksi', 'siswa'])
-            ->make(true);
+            });
     }
 
     /**
@@ -141,14 +128,6 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::find($id);
         return view('siswa.form', compact('siswa'));
-    }
-
-    public function pdf($id)
-    {
-        $siswa = Siswa::find($id);
-
-        $pdf =  PDF::loadview('siswa.pdf', compact('siswa'));
-        return $pdf->stream('siswa.pdf');
     }
 
     /**

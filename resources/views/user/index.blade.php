@@ -1,14 +1,11 @@
 @extends('template.layout')
 
 @section('title')
-    Siswa
+    User
 @endsection
 
 @section('content')
 <section class="section">
-    <div class="section-header">
-        <h1>Data Siswa</h1>
-    </div>
 
     <div class="section-body">
         <div class="row">
@@ -19,12 +16,9 @@
                     {{-- Judul --}}
                     <div class="card-header">
                         <div class="col-12 col-md-10 col-lg-10">
-                            <h4>Data Siswa</h4>
+                            <h4>Data User</h4>
                         </div>
                         <div class="col-12 col-md-2 col-lg-2">
-                            <button type="button" onclick="addForm('{{ route('siswa.store') }}')" class="btn btn-primary shadow-sm rounded-pill">
-                                    <i class="fa fa-plus"></i> Tambah
-                            </button>
                         </div>
                     </div>
 
@@ -40,7 +34,7 @@
                                     <td scope="col">Email</td>
                                     <td scope="col">NISN</td>
                                     <td scope="col">Alamat</td>
-                                    <td scope="col" style="width: 84px;">Aksi</td>
+                                    <!-- <td scope="col" style="width: 84px;">Aksi</td> -->
                                 </tr>
                             </thead>
                         </table>
@@ -52,9 +46,6 @@
         </div>
     </div>
 </section>
-
-@include('siswa.form')
-
 @endsection
 
 @push('script')
@@ -77,7 +68,7 @@
                     {data: 'email'},
                     {data: 'nisn'},
                     {data: 'alamat'},
-                    {data: 'aksi'}
+                    
                 ]
             });
         })
@@ -112,10 +103,6 @@
 
             $('#modalForm form').attr('action', url);
             $('#modalForm [name=_method]').val('post');
-        }
-
-        function pdf(url){
-        $('.form-siswa').attr('action', url).attr('target', '_blank').submit();
         }
 
         function editData(url){

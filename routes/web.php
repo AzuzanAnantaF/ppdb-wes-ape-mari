@@ -5,7 +5,9 @@ use App\Http\Controllers\{
     AuthController,
     DashboardController,
     SiswaController,
-    JurusanController
+    JurusanController,
+    ProfileController,
+    UserController
 };
 
 /*
@@ -44,3 +46,9 @@ Route::resource('/siswa', SiswaController::class);
 /// Route Jurusan
 Route::get('/jurusan/data', [JurusanController::class, 'data'])->name('jurusan.data');
 Route::resource('/jurusan', JurusanController::class);
+
+ //Profile
+ Route::resource('/profile', ProfileController::class);
+
+  //User
+  Route::resource('/user', UserController::class);

@@ -15,9 +15,19 @@ return new class extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
+            $table->integer('role_id')->default('2');
             $table->string('nama');
-            $table->integer('jurusan_id');
-            $table->text('keterangan');
+            $table->string('jurusan_id');
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
+            $table->string('agama');
+            $table->string('email')->unique();
+            $table->string('telepon');
+            $table->integer('nisn');
+            $table->string('tempat_lahir');
+            $table->date('tanggal_lahir');
+            $table->text('alamat');
+            $table->text('asal_sekolah');
+            $table->string('avatar')->nullable();
             $table->timestamps();
         });
     }
