@@ -107,7 +107,7 @@
 
         function addForm(url){
             $('#modalForm').modal('show');
-            $('#modalForm .modal-title').text('Tambah Data Jurusan');
+            $('#modalForm .modal-title').text('Tambah Data Siswa');
             $('#modalForm form')[0].reset();
 
             $('#modalForm form').attr('action', url);
@@ -120,7 +120,7 @@
 
         function editData(url){
             $('#modalForm').modal('show');
-            $('#modalForm .modal-title').text('Edit Data Jurusan');
+            $('#modalForm .modal-title').text('Edit Data Siswa');
 
             $('#modalForm form')[0].reset();
             $('#modalForm form').attr('action', url);

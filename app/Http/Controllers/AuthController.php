@@ -77,19 +77,20 @@ class AuthController extends Controller
 
         //membuat table siswa
         $request->request->add(['user_id' => $user->id]);
-        $siswa = Siswa::create([
-            'nama' => $request->nama,
-            'jurusan_id' => $request->jurusan_id,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'agama' => $request->agama,
-            'email' => $request->email,
-            'telepon' => $request->telepon,
-            'nisn' => $request->nisn,
-            'tempat_lahir' => $request->tempat_lahir,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'alamat' => $request->alamat,
-            'asal_sekolah' => $request->asal_sekolah,
-        ]);
+        // $siswa = Siswa::create([
+        //     'nama' => $request->nama,
+        //     'jurusan_id' => $request->jurusan_id,
+        //     'jenis_kelamin' => $request->jenis_kelamin,
+        //     'agama' => $request->agama,
+        //     'email' => $request->email,
+        //     'telepon' => $request->telepon,
+        //     'nisn' => $request->nisn,
+        //     'tempat_lahir' => $request->tempat_lahir,
+        //     'tanggal_lahir' => $request->tanggal_lahir,
+        //     'alamat' => $request->alamat,
+        //     'asal_sekolah' => $request->asal_sekolah,
+        // ]);
+        $siswa = Siswa::create($request->all());
 
         if($validator->fails()){
             return response()->json($validator->errors(), 422);
@@ -101,6 +102,6 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 }
